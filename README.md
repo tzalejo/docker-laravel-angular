@@ -30,8 +30,8 @@ Cree una carpeta mysql en la raíz del proyecto, junto con las carpetas nginx y 
 `./mysql:/var/lib/mysql`
 
 ## Comando adicionales:
-ejecutamos la instalaciones de todas las dependencias del backend y frontend
-- `npm run install-dependencies`
+
+- `npm run install-dependencies` ejecutamos la instalaciones de todas las dependencias del backend y frontend
 
 ## Por algun motivo de persmiso storage ejecutar:
 
@@ -39,8 +39,6 @@ ejecutamos la instalaciones de todas las dependencias del backend y frontend
 - `docker-compose exec php chmod -R guo+w storage`
 - `docker-compose run --rm artisan cache:clear`
 
-ejecutamos docker-compose production
-- `docker-compose -f docker-compose.prod.yml up -d --build`
-ejecuta composer, npm, artisan dentro del contenedor
-- `docker-compose run --rm artisan (composer, npm) comando`
+- `docker-compose -f docker-compose.prod.yml up -d --build` ejecutamos docker-compose production
+- `docker-compose run --rm artisan (composer, npm) comando` ejecuta composer, npm, artisan dentro del contenedor
 - `docker-compose exec {container_name} /bin/sh`
