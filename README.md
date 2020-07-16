@@ -10,16 +10,16 @@ Primero agregue todo su proyecto Laravel a la carpeta src, luego abra una termin
 
 Nuevo: Se han agregado tres nuevos contenedores que manejan los comandos Composer, NPM y Artisan sin tener que tener estas plataformas instaladas en su computadora local. Use las siguientes plantillas de comando de la raíz de su proyecto, modificándolas para que se ajusten a su caso de uso particular:
 
-`docker-compose run --rm composer update`
-`docker-compose run --rm npm run dev`
-`docker-compose run --rm artisan migrate`
+- `docker-compose run --rm composer update`
+- `docker-compose run --rm npm run dev`
+- `docker-compose run --rm artisan migrate`
 
 Los contenedores creados y sus puertos (si se usan) son los siguientes:
 
-`nginx - :8088`
-`mysql - :4306`
-`php - :9000`
-`angular -:4200`
+- `nginx - :8088`
+- `mysql - :4306`
+- `php - :9000`
+- `angular -:4200`
 
 ## Persistent MySQL Storage
 
@@ -30,15 +30,17 @@ Cree una carpeta mysql en la raíz del proyecto, junto con las carpetas nginx y 
 `./mysql:/var/lib/mysql`
 
 ## Comando adicionales:
-
-`npm run install-dependencies                                // ejecutamos la instalaciones de todas las dependencias del backend y frontend`
+ejecutamos la instalaciones de todas las dependencias del backend y frontend
+- `npm run install-dependencies`
 
 ## Por algun motivo de persmiso storage ejecutar:
 
-`docker-compose exec php chmod -R gu+w storage`
-`docker-compose exec php chmod -R guo+w storage`
-`docker-compose run --rm artisan cache:clear`
+- `docker-compose exec php chmod -R gu+w storage`
+- `docker-compose exec php chmod -R guo+w storage`
+- `docker-compose run --rm artisan cache:clear`
 
-`docker-compose -f docker-compose.prod.yml up -d --build     // ejecutamos docker-compose production`
-`docker-compose run --rm artisan (composer, npm) comando     // ejecuta composer, npm, artisan dentro del contenedor`
-`docker-compose exec {container_name} /bin/sh`
+ejecutamos docker-compose production
+- `docker-compose -f docker-compose.prod.yml up -d --build`
+ejecuta composer, npm, artisan dentro del contenedor
+- `docker-compose run --rm artisan (composer, npm) comando`
+- `docker-compose exec {container_name} /bin/sh`
