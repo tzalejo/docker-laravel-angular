@@ -1,0 +1,29 @@
+{
+  "name": "cec",
+  "version": "1.0.0",
+  "description": "Una aplicacion para gestion cursos, realizado con angular y laravel",
+  "main": "index.js",
+  "scripts": {
+    "install-dependencies": "npm run install-dependencies-front && npm run install-dependencies-back",
+    "install-dependencies-front": "cd frontend && npm i",
+    "install-dependencies-back": "cd backend && composer install",
+    
+    "start:front": "npm run install-dependencies-front && cd frontend && npm start",
+    "build:front": "cd frontend && npm run build",
+    
+    "start:back": "npm run install-dependencies-back && cd backend && php artisan serve",
+    
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "larael",
+    "php",
+    "docker",
+    "typescript",
+    "cec",
+    "postgres"
+  ],
+  "author": "Alejandro Valenzuela",
+  "license": "MIT"
+}
