@@ -1,5 +1,22 @@
 # Docker Angular y Laravel
 
+## Crear proyecto laravel
+docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
+
+## Crear proyecto angular
+docker-compose run --rm npm ng new frontend --directory=.
+
+## Para dar persmiso para modificar:
+
+- `docker-compose exec php chmod -R gu+w .`
+- `docker-compose exec php chmod -R guo+w .`
+
+- `docker-compose exec npm chmod -R gu+w .`
+- `docker-compose exec npm chmod -R guo+w .`
+
+- `docker-compose run --rm artisan cache:clear`
+
+
 Los contenedores creados y sus puertos (si se usan) son los siguientes:
 
 - `nginx - :8088`
@@ -15,11 +32,6 @@ Cree una carpeta mysql en la raíz del proyecto, junto con las carpetas nginx y 
 
 `./mysql:/var/lib/mysql`
 
-## Para dar persmiso ejecutar:
-
-- `docker-compose exec php chmod -R gu+w .`
-- `docker-compose exec php chmod -R guo+w .`
-- `docker-compose run --rm artisan cache:clear`
 
 ## Comando adicionales:
 
