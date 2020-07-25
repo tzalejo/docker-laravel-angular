@@ -15,16 +15,15 @@ Cree una carpeta mysql en la raíz del proyecto, junto con las carpetas nginx y 
 
 `./mysql:/var/lib/mysql`
 
+## Para dar persmiso ejecutar:
+
+- `docker-compose exec php chmod -R gu+w .`
+- `docker-compose exec php chmod -R guo+w .`
+- `docker-compose run --rm artisan cache:clear`
+
 ## Comando adicionales:
 
 - `npm run install-dependencies` ejecutamos la instalaciones de todas las dependencias del backend y frontend
-
-## Por algun motivo de persmiso storage ejecutar:
-
-- `docker-compose exec php chmod -R gu+w storage`
-- `docker-compose exec php chmod -R guo+w storage`
-- `docker-compose run --rm artisan cache:clear`
-
 - `docker-compose -f docker-compose.prod.yml up -d --build` ejecutamos docker-compose production
 - `docker-compose run --rm artisan (composer, npm) comando` ejecuta composer, npm, artisan dentro del contenedor
 - `docker-compose exec {container_name} /bin/sh`
