@@ -4,7 +4,7 @@ networks:
 
 services:
   nginx:
-    image: nginx:stable-alpine
+    image: nginx:1.18.0-alpine
     container_name: nginx
     ports:
       - "8088:80"
@@ -48,7 +48,7 @@ services:
     networks:
       - laravel
   composer:
-    image: composer:latest
+    image: composer:1.10 #1.8.6
     container_name: composer
     volumes:
       - ./backend:/var/www/html
