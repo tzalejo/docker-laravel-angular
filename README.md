@@ -1,19 +1,5 @@
 # Docker Angular y Laravel
 
-Un flujo de trabajo bastante simplificado de composición acoplable que configura una red de contenedores LEMP para el desarrollo local.
-
-## Uso
-
-Para comenzar, asegúrese de tener Docker instalado en su sistema y luego clone este repositorio.
-
-Primero agregue todo su proyecto Laravel a la carpeta src, luego abra una terminal y desde la raíz de este repositorio clonado ejecute `docker-compose up -d --build`. Abra su navegador de elección en `http://localhost:8088` y debería ver que su aplicación Laravel se ejecuta según lo previsto. Su aplicación Laravel debe estar en el directorio src primero antes de abrir los contenedores, de lo contrario, el contenedor artesanal no se compilará, ya que le falta el archivo apropiado.
-
-Nuevo: Se han agregado tres nuevos contenedores que manejan los comandos Composer, NPM y Artisan sin tener que tener estas plataformas instaladas en su computadora local. Use las siguientes plantillas de comando de la raíz de su proyecto, modificándolas para que se ajusten a su caso de uso particular:
-
-- `docker-compose run --rm composer update`
-- `docker-compose run --rm npm run dev`
-- `docker-compose run --rm artisan migrate`
-
 Los contenedores creados y sus puertos (si se usan) son los siguientes:
 
 - `nginx - :8088`
