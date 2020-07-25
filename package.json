@@ -4,6 +4,10 @@
   "description": "Una aplicacion para gestion cursos, realizado con angular y laravel",
   "main": "index.js",
   "scripts": {
+    "chmod-backend":"docker-compose exec php chmod -R gu+w . && docker-compose exec php chmod -R guo+w .",
+    "chmod-frontend":"docker-compose exec npm chmod -R gu+w . && docker-compose exec npm chmod -R guo+w .",
+    "chmods":"npm run chmod-backend && npm run chmod-frontend",
+
     "install-dependencies": "npm run install-dependencies-front && npm run install-dependencies-back",
     "install-dependencies-front": "cd frontend && npm i",
     "install-dependencies-back": "cd backend && composer install",
@@ -22,7 +26,7 @@
     "docker",
     "typescript",
     "cec",
-    "postgres"
+    "mysql"
   ],
   "author": "Alejandro Valenzuela",
   "license": "MIT"
