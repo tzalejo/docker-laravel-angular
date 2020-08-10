@@ -4,6 +4,8 @@
   "description": "Una aplicacion para gestion cursos, realizado con angular y laravel",
   "main": "index.js",
   "scripts": {
+    "dcbuild":"docker-compose build && docker-compose up",
+    "dcdestruir":"docker-compose down && sudo rm -rf mysql/",
     "chmod-backend":"docker-compose exec php chmod -R gu+w . && docker-compose exec php chmod -R guo+w .",
     "chmod-frontend":"docker-compose exec npm chmod -R gu+w . && docker-compose exec npm chmod -R guo+w .",
     "chmods":"npm run chmod-backend && npm run chmod-frontend",

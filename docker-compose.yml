@@ -41,14 +41,16 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     container_name: php
+    user: 1000:1000
     volumes:
       - ./backend:/var/www/html
+      # - /var/www/html/vendor
     ports:
       - "9000:9000"
     networks:
       - laravel
   composer:
-    image: composer:1.10 #1.8.6
+    image: composer:1.8.6 #especificar tags
     container_name: composer
     volumes:
       - ./backend:/var/www/html
@@ -61,10 +63,12 @@ services:
       context: .
       dockerfile: Dockerfile.frontend
     container_name: npm
+    user: 1000:1000
     ports:
       - "4200:4200"
     volumes:
       - ./frontend:/app
+      - /app/node_modules/
     # working_dir: /app
     # entrypoint: ["npm"]
     networks:
@@ -75,6 +79,7 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     container_name: artisan
+    user: 1000:1000
     volumes:
       - ./backend:/var/www/html
     depends_on:

@@ -39,3 +39,8 @@ Cree una carpeta mysql en la raíz del proyecto, junto con las carpetas nginx y 
 - `docker-compose -f docker-compose.prod.yml up -d --build` ejecutamos docker-compose production
 - `docker-compose run --rm artisan (composer, npm) comando` ejecuta composer, npm, artisan dentro del contenedor
 - `docker-compose exec {container_name} /bin/sh`
+
+## Ngrok
+
+- `./ngrok http 8080 -host-header="localhost:8080"`
+- `./ngrok http --host-header=rewrite 8080`

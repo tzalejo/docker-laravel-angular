@@ -1,3 +1,10 @@
-FROM php:7.2.32-fpm
-
+FROM php:7.2.32-fpm-alpine
+LABEL maintainer="tzalejo@gmail.com"
+LABEL version="1.0"
 RUN docker-php-ext-install pdo pdo_mysql
+# RUN chmod -R www-data:www-data /var/www/html
+RUN find /var/www/html -type d -exec chmod 0755 {} \; 
+RUN find /var/www/html -type f -exec chmod 0644 {} \;
+# RUN chmod g+s .
+# RUN chmod -R gu+w .--
+# RUN chmod -R guo+w .
