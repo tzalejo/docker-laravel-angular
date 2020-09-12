@@ -1,10 +1,24 @@
-FROM php:7.2.32-fpm-alpine
-LABEL maintainer="tzalejo@gmail.com"
-LABEL version="1.0"
+# FROM php:7.2.32-fpm-alpine
+# LABEL maintainer="tzalejo@gmail.com"
+# LABEL version="1.0"
+# RUN docker-php-ext-install pdo pdo_mysql
+# # RUN chmod -R www-data:www-data /var/www/html
+# RUN find /var/www/html -type d -exec chmod 0755 {} \; 
+# RUN find /var/www/html -type f -exec chmod 0644 {} \;
+# # RUN chmod g+s .
+# # RUN chmod -R gu+w .--
+# # RUN chmod -R guo+w .
+FROM php:7.4-fpm-alpine
+# LABEL maintainer="tzalejo@gmail.com"
+# LABEL version="1.1"
+ADD ./php/www.conf /usr/local/etc/php-fpm.d/www.conf
+
+RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D laravel
+
+RUN mkdir -p /var/www/html
+
+RUN chown laravel:laravel /var/www/html
+
+WORKDIR /var/www/html
+
 RUN docker-php-ext-install pdo pdo_mysql
-# RUN chmod -R www-data:www-data /var/www/html
-RUN find /var/www/html -type d -exec chmod 0755 {} \; 
-RUN find /var/www/html -type f -exec chmod 0644 {} \;
-# RUN chmod g+s .
-# RUN chmod -R gu+w .--
-# RUN chmod -R guo+w .
