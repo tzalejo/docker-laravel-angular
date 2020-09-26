@@ -1,5 +1,26 @@
 # Docker Angular y Laravel
 
+## Definir las variables de entorno
+.env-ejemplo cambiar a .env
+
+### variable de bd
+DB_DATABASE=
+DB_USER=
+DB_PASSWORD=
+DB_ROOT_PASSWORD=
+DB_SERVICE_NAME=
+DB_SERVICE_TAGS=
+DB_PORT=
+DB_PORT_CONTAINER=
+DB_VOLUMEN=
+### variable backend
+APP_VOLUMEN=
+APP_PORT=
+### variable frontend
+NPM_VOLUMEN=
+NPM_PORT=
+NPM_PORT_CONTAINER=
+
 ## Crear proyecto laravel
 docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
 
@@ -16,13 +37,12 @@ docker-compose run --rm npm ng new frontend --directory=.
 
 - `docker-compose run --rm artisan cache:clear`
 
+## Los contenedores creados y sus puertos (si se usan) son los siguientes:
 
-Los contenedores creados y sus puertos (si se usan) son los siguientes:
-
-- `nginx - :8088`
-- `mysql - :4306`
+- `nginx - :${APP_VOLUMEN}`
+- `mysql - :${DB_PORT}`
 - `php - :9000`
-- `angular -:4200`
+- `angular -:${NPM_PORT}`
 
 ## Persistent MySQL Storage
 
@@ -30,7 +50,7 @@ Por defecto, cada vez que derribe la red de compilación acoplable, sus datos My
 
 Cree una carpeta mysql en la raíz del proyecto, junto con las carpetas nginx y src. Bajo el servicio mysql en su archivo `docker-compose.yml`, agregue las siguientes líneas: volumes:
 
-`./mysql:/var/lib/mysql`
+`${DB_VOLUMEN}:/var/lib/mysql`
 
 
 ## Comando adicionales:

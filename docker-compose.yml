@@ -10,9 +10,9 @@ services:
       dockerfile: nginx.dockerfile
     container_name: nginx
     ports:
-      - "8088:80"
+      - "${APP_PORT}:80"
     volumes:
-      - ./backend:/var/www/html
+      - ${APP_VOLUMEN_PATH}:/var/www/html
     depends_on:
       - php
       - mysql
@@ -25,16 +25,16 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "5306:3306"
+      - "${DB_PORT}:${DB_PORT_CONTAINER}"
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ${DB_VOLUMEN_PATH}:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: cec
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: admin
-      MYSQL_ROOT_PASSWORD: admin
-      SERVICE_NAME: mysql
-      SERVICE_TAGS: dev
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      SERVICE_NAME: ${DB_SERVICE_NAME}
+      SERVICE_TAGS: ${DB_SERVICE_TAGS}
     networks:
       - laravel
 
@@ -44,7 +44,7 @@ services:
       dockerfile: Dockerfile.backend
     container_name: php
     volumes:
-      - ./backend:/var/www/html:delegated
+      - ${APP_VOLUMEN_PATH}:/var/www/html:delegated
     ports:
       - "9000:9000"
     networks:
@@ -56,15 +56,13 @@ services:
       dockerfile: composer.dockerfile
     container_name: composer
     volumes:
-      - ./backend:/var/www/html
+      - ${APP_VOLUMEN_PATH}:/var/www/html
     working_dir: /var/www/html
     depends_on:
       - php
     user: laravel
     networks:
       - laravel
-    # entrypoint: ['composer', '--ignore-platform-reqs']
-
 
   npm:
     build:
@@ -72,12 +70,9 @@ services:
       dockerfile: Dockerfile.frontend
     container_name: npm
     ports:
-      - "4200:4200"
+      - "${NPM_PORT}:${NPM_PORT_CONTAINER}"
     volumes:
-      - ./frontend:/app
-    # - /app/node_modules/
-    # working_dir: /app
-    # entrypoint: ["npm"]
+      - ${NPM_VOLUMEN_PATH}:/app
     user: 1000:1000
     networks:
       - laravel
@@ -88,7 +83,7 @@ services:
       dockerfile: Dockerfile.backend
     container_name: artisan
     volumes:
-      - ./backend:/var/www/html:delegated
+      - ${APP_VOLUMEN_PATH}:/var/www/html:delegated
     depends_on:
       - mysql
     working_dir: /var/www/html

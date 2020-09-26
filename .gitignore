@@ -3,4 +3,5 @@
 frontend/*
 backend/*
 mysql/*
+.env
 
