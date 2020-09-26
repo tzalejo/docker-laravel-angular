@@ -3,7 +3,7 @@
 ## Definir las variables de entorno
 .env-ejemplo cambiar a .env
 
-### variable de bd
+### variable de base de datos
 - `DB_DATABASE=`
 - `DB_USER=`
 - `DB_PASSWORD=`
