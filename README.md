@@ -4,22 +4,22 @@
 .env-ejemplo cambiar a .env
 
 ### variable de bd
-DB_DATABASE=
-DB_USER=
-DB_PASSWORD=
-DB_ROOT_PASSWORD=
-DB_SERVICE_NAME=
-DB_SERVICE_TAGS=
-DB_PORT=
-DB_PORT_CONTAINER=
-DB_VOLUMEN=
+`DB_DATABASE=`
+`DB_USER=`
+`DB_PASSWORD=`
+`DB_ROOT_PASSWORD=`
+`DB_SERVICE_NAME=`
+`DB_SERVICE_TAGS=`
+`DB_PORT=`
+`DB_PORT_CONTAINER=`
+`DB_VOLUMEN=`
 ### variable backend
-APP_VOLUMEN=
-APP_PORT=
+`APP_VOLUMEN=`
+`APP_PORT=`
 ### variable frontend
-NPM_VOLUMEN=
-NPM_PORT=
-NPM_PORT_CONTAINER=
+`NPM_VOLUMEN=`
+`NPM_PORT=`
+`NPM_PORT_CONTAINER=`
 
 ## Crear proyecto laravel
 docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
