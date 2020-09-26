@@ -3,7 +3,7 @@
 ## Definir las variables de entorno
 .env-ejemplo cambiar a .env
 
-### variable de base de datos
+### Variable de base de datos
 - `DB_DATABASE=`
 - `DB_USER=`
 - `DB_PASSWORD=`
@@ -13,10 +13,10 @@
 - `DB_PORT=`
 - `DB_PORT_CONTAINER=`
 - `DB_VOLUMEN=`
-### variable backend
+### Variable Backend
 - `APP_VOLUMEN=`
 - `APP_PORT=`
-### variable frontend
+### Variable Frontend
 - `NPM_VOLUMEN=`
 - `NPM_PORT=`
 - `NPM_PORT_CONTAINER=`
