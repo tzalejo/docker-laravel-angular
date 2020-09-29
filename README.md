@@ -13,6 +13,7 @@
 - `DB_PORT=`
 - `DB_PORT_CONTAINER=`
 - `DB_VOLUMEN=`
+- `DB_MYSQL_VERSION=`
 ### Variable Backend
 - `APP_VOLUMEN=`
 - `APP_PORT=`
@@ -62,5 +63,5 @@ Cree una carpeta mysql en la raíz del proyecto, junto con las carpetas nginx y 
 
 ## Ngrok
 
-- `./ngrok http 8080 -host-header="localhost:8080"`
-- `./ngrok http --host-header=rewrite 8080`
+- `./ngrok http APP_PORT -host-header="localhost:APP_PORT"`
+- `./ngrok http --host-header=rewrite APP_PORT`
