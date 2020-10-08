@@ -68,5 +68,5 @@ Cree una carpeta mysql en la raíz del proyecto, junto con las carpetas nginx y 
 
 
 # Donaciones
-BTC: bc1q4je0jjmycfrfum4cgut48qdprvm02ahfshwwga
-ETH: 0x4804c6B390fC55BB6E6684216D1aDeD6B83e1198
+- BTC: bc1q4je0jjmycfrfum4cgut48qdprvm02ahfshwwga
+- ETH: 0x4804c6B390fC55BB6E6684216D1aDeD6B83e1198
