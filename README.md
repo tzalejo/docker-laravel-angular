@@ -65,3 +65,8 @@ Cree una carpeta mysql en la raíz del proyecto, junto con las carpetas nginx y 
 
 - `./ngrok http APP_PORT -host-header="localhost:APP_PORT"`
 - `./ngrok http --host-header=rewrite APP_PORT`
+
+
+# Donaciones
+BTC: bc1q4je0jjmycfrfum4cgut48qdprvm02ahfshwwga
+ETH: 0x4804c6B390fC55BB6E6684216D1aDeD6B83e1198
