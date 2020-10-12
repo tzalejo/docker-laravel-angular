@@ -19,7 +19,7 @@
     
     "start:back": "npm run install-dependencies-back && cd backend && php artisan serve",
     
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "docker-compose exec php ./vendor/bin/phpunit"
   },
   "keywords": [
     "angular",

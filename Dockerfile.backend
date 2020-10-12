@@ -11,4 +11,7 @@ RUN chown laravel:laravel /var/www/html
 
 WORKDIR /var/www/html
 
-RUN docker-php-ext-install pdo pdo_mysql
+# Install dev dependencies
+RUN apk add --no-cache --virtual .build-deps curl-dev sqlite-dev
+# Install php extensions
+RUN docker-php-ext-install curl pdo pdo_mysql pdo_sqlite
