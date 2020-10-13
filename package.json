@@ -19,7 +19,7 @@
     
     "start:back": "npm run install-dependencies-back && cd backend && php artisan serve",
     
-    "test": "docker-compose exec php ./vendor/bin/phpunit"
+    "test": "docker-compose exec php php artisan test"
   },
   "keywords": [
     "angular",
