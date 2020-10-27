@@ -2,6 +2,6 @@
 .idea
 frontend/*
 backend/*
-mysql/*
+data/*
 .env
 

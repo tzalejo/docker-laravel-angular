@@ -1,5 +1,6 @@
-
-FROM node:${NPM_NODE_VERSION}-${NPM_NODE_VARIANTE}
+ARG NODE_VERSION 
+ARG NODE_VARIANTE
+FROM node:${NODE_VERSION}-${NODE_VARIANTE}
 LABEL maintainer="tzalejo@gmail.com"
 LABEL version="1.1"
 RUN npm install -g @angular/cli && npm cache clean --force

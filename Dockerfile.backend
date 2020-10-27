@@ -1,4 +1,6 @@
-FROM php:${APP_PHP_VERSION}-${APP_PHP_VARIANTE}
+ARG PHP_VERSION
+ARG PHP_VARIANTE
+FROM php:${PHP_VERSION}-${PHP_VARIANTE}
 LABEL maintainer="tzalejo@gmail.com"
 LABEL version="1.1"
 ADD ./php/www.conf /usr/local/etc/php-fpm.d/www.conf
@@ -36,4 +38,4 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-configure imap
 # Install php extensions
-RUN docker-php-ext-install curl pdo pdo_mysql pdo_sqlite exif gd
+RUN docker-php-ext-install curl pdo pdo_mysql pdo_sqlite exif gd pgsql pdo_pgsql
