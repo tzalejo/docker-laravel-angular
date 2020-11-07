@@ -37,10 +37,11 @@
 - `NPM_NODE_VARIANTE=alpine`
 
 ## Crear proyecto laravel
-docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
+`docker-compose run --rm composer create-project --prefer-dist laravel/laravel .`
+`docker-compose run --rm composer create-project --prefer-dist laravel/laravel:^7.0 .` Si quiero especificar una version 
 
 ## Crear proyecto angular
-docker-compose run --rm npm ng new frontend --directory=.
+`docker-compose run --rm npm ng new frontend --directory=.`
 
 ## Para dar persmiso para modificar:
 
@@ -68,6 +69,18 @@ Cree una carpeta mysql en la raíz del proyecto, junto con las carpetas nginx y 
 
 `${MYSQL_VOLUMEN_PATH}:/var/lib/mysql`
 `${POSTGRES_VOLUMEN_PATH}:/var/lib/postgresql/data`
+
+## Configurar backend
+Dependiendo de que base de datos usar, modificar .env del backend(que coincidan con .env del proyecto raiz)
+en este caso realizo el ejemplo con mysql:
+
+`DB_HOST=mysql`
+`DB_PORT=MYSQL_PORT_CONTAINER` 
+`DB_DATABASE=MYSQL_DATABASE`
+`DB_USERNAME=MYSQL_USER`
+`DB_PASSWORD=MYSQL_PASSWORD`
+
+`docker-compose run --rm artisan migrate:refresh --seed`
 
 ## Comando adicionales:
 
