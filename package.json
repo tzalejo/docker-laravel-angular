@@ -19,7 +19,10 @@
     
     "start:back": "npm run install-dependencies-back && cd backend && php artisan serve",
     
-    "test": "docker-compose exec php php artisan test"
+    "test": "docker-compose exec php php artisan test",
+
+    "postinstall": "ng build --aot --prod",
+    "heroku-postbuild": "ng build --prod"
   },
   "keywords": [
     "angular",
