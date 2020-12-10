@@ -1,7 +1,7 @@
 # Docker Angular y Laravel
 
 ## Definir las variables de entorno
-.env-ejemplo cambiar a .env
+.env-ejemplo cambiar a .env primero debemos seleccionar que base de datos usaremos, mysql o postgres y luego definir las variable de esta. Luego las variable del backend deben indicar que version de php y composer( tener en cuanta a la hora de que version de laravel vamos a usar) y del frontend seria con angular.
 
 ### Variable de base de datos: msyql
 - `MYSQL_DATABASE=`
@@ -23,18 +23,23 @@
 - `POSTGRES_ENTRYPOINT_INITDB=`
 - `POSTGRES_VOLUMEN_PATH=`
 
-### Variable Backend
+### Variable Backend(laravel)
 - `APP_VOLUMEN=`
 - `APP_PORT=`
 - `APP_PHP_VERSION=7.4`
 - `APP_PHP_VARIANTE=fpm-alpine`
+- `COMPOSER_VERSION=2.0`
 
-### Variable Frontend
+### Variable Frontend(Angular)
 - `NPM_VOLUMEN=`
 - `NPM_PORT=`
 - `NPM_PORT_CONTAINER=`
 - `NPM_NODE_VERSION=14.5.0`
 - `NPM_NODE_VARIANTE=alpine`
+
+Una vez definido todas las variables de entorno, debemos crear el entorno con el comando:
+- `docker-compose up -d --build `
+Con esto ya estaria para continuar creando los proyectos de laravel y angular. Algo que hay que saber es que hay dos contenedores, artisan y composer, que son contenedores que utilizaremos para ejecutar comandos.
 
 ## Crear proyecto laravel
 docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
@@ -42,7 +47,7 @@ docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
 ## Crear proyecto angular
 docker-compose run --rm npm ng new frontend --directory=.
 
-## Para dar persmiso para modificar:
+## Para dar persmiso para modificar:(solo si tiene problema de permiso pero ya fue solucionado por lo tanto este paso no es necesario)
 
 - `docker-compose exec php chmod -R gu+w .`
 - `docker-compose exec php chmod -R guo+w .`
@@ -60,15 +65,6 @@ docker-compose run --rm npm ng new frontend --directory=.
 - `php - :9000`
 - `angular -:${NPM_PORT}`
 
-## Persistent MySQL Storage
-
-Por defecto, cada vez que derribe la red de compilación acoplable, sus datos MySQL(o Postgres) se eliminarán después de que se destruyan los contenedores. Si desea tener datos persistentes que permanecen después de bajar y volver a colocar los contenedores, haga lo siguiente:
-
-Cree una carpeta mysql en la raíz del proyecto, junto con las carpetas nginx y src. Bajo el servicio mysql(o pgsql) en su archivo `docker-compose.yml`, agregue las siguientes líneas: volumes:
-
-`${MYSQL_VOLUMEN_PATH}:/var/lib/mysql`
-`${POSTGRES_VOLUMEN_PATH}:/var/lib/postgresql/data`
-
 ## Comando adicionales:
 
 - `npm run install-dependencies` ejecutamos la instalaciones de todas las dependencias del backend y frontend
@@ -81,7 +77,6 @@ Cree una carpeta mysql en la raíz del proyecto, junto con las carpetas nginx y 
 
 - `./ngrok http APP_PORT -host-header="localhost:APP_PORT"`
 - `./ngrok http --host-header=rewrite APP_PORT`
-
 
 # Donaciones
 - BTC: bc1q4je0jjmycfrfum4cgut48qdprvm02ahfshwwga

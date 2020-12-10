@@ -40,8 +40,7 @@ services:
       context: .
       dockerfile: composer.dockerfile
       args:
-        - PHP_VERSION=${APP_PHP_VERSION}
-        - PHP_VARIANTE=${APP_PHP_VARIANTE}
+        - COMPOSER_VERSION=${COMPOSER_VERSION}
     container_name: composer
     volumes:
       - ${APP_VOLUMEN_PATH}:/var/www/html
