@@ -48,16 +48,6 @@ Con esto ya estaria para continuar creando los proyectos de laravel y angular. A
 ## Crear proyecto angular
 `docker-compose run --rm npm ng new frontend --directory=.`
 
-## Para dar persmiso para modificar:(solo si tiene problema de permiso pero ya fue solucionado por lo tanto este paso no es necesario)
-
-- `docker-compose exec php chmod -R gu+w .`
-- `docker-compose exec php chmod -R guo+w .`
-
-- `docker-compose exec npm chmod -R gu+w .`
-- `docker-compose exec npm chmod -R guo+w .`
-
-- `docker-compose run --rm artisan cache:clear`
-
 ## Los contenedores creados y sus puertos (si se usan) son los siguientes:
 
 - `nginx - :${APP_VOLUMEN}`
