@@ -49,15 +49,17 @@ Con esto ya estaria para continuar creando los proyectos de laravel y angular. A
 `docker-compose run --rm npm ng new frontend --directory=.`
 
 ## Los contenedores creados y sus puertos (si se usan) son los siguientes:
-
 - `nginx - :${APP_VOLUMEN}`
 - `mysql - :${MYSQL_PORT}`
 - `pgsql - :${POSTGRES_PORT}`
 - `php - :9000`
 - `angular -:${NPM_PORT}`
 
-## Comando adicionales:
+## Comando instalar dependencias
+- `docker-compose run --rm composer install` instalamos las dependencia de backend
+- `docker-compose run --rm npm npm install` instalamos las dependencia de frontend
 
+## Comando adicionales:
 - `npm run install-dependencies` ejecutamos la instalaciones de todas las dependencias del backend y frontend
 - `docker-compose -f docker-compose.prod.yml up -d --build` ejecutamos docker-compose production
 - `docker-compose run --rm artisan (composer, npm) comando` ejecuta composer, npm, artisan dentro del contenedor
@@ -65,7 +67,6 @@ Con esto ya estaria para continuar creando los proyectos de laravel y angular. A
 - `psql -U admin -d postgres -h localhost`
 
 ## Ngrok
-
 - `./ngrok http APP_PORT -host-header="localhost:APP_PORT"`
 - `./ngrok http --host-header=rewrite APP_PORT`
 
