@@ -34,7 +34,7 @@ RUN set -e; \
                 oniguruma-dev \
                 sqlite-dev
 
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+# RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-configure imap
 # Install php extensions

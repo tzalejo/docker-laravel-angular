@@ -66,6 +66,11 @@ Con esto ya estaria para continuar creando los proyectos de laravel y angular. A
 - `docker-compose exec {container_name} /bin/sh`
 - `psql -U admin -d postgres -h localhost`
 
+## Comando de laravel:
+- `docker-compose run --rm composer dump-autoload` 
+- `docker-compose run --rm artisan config:clear`
+- `docker-compose run --rm artisan router:clear`
+
 ## Ngrok
 - `./ngrok http APP_PORT -host-header="localhost:APP_PORT"`
 - `./ngrok http --host-header=rewrite APP_PORT`
