@@ -1,5 +1,5 @@
 {
-  "name": "cec",
+  "name": "alejandro",
   "version": "1.0.0",
   "description": "Una aplicacion para gestion cursos, realizado con angular y laravel",
   "main": "index.js",
@@ -19,7 +19,7 @@
     
     "start:back": "npm run install-dependencies-back && cd backend && php artisan serve",
     
-    "test": "docker-compose exec php php artisan test",
+    "test": "docker-compose run --rm php ./vendor/bin/phpunit",
 
     "postinstall": "ng build --aot --prod",
     "heroku-postbuild": "ng build --prod"
@@ -30,7 +30,7 @@
     "php",
     "docker",
     "typescript",
-    "cec",
+    "postgres",
     "mysql"
   ],
   "author": "Alejandro Valenzuela",
