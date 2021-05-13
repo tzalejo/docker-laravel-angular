@@ -31,6 +31,9 @@ RUN set -e; \
                 libxslt-dev libxml2-dev \
                 postgresql-dev \
                 libgcrypt-dev \
+                vim \
+                unzip \
+                curl \
                 oniguruma-dev \
                 sqlite-dev
 

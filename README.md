@@ -48,7 +48,7 @@ Con esto ya estaria para continuar creando los proyectos de laravel y angular. A
 ## Crear proyecto angular
 `docker-compose run --rm npm ng new frontend --directory=.`
 
-## Los contenedores creados y sus puertos (si se usan) son los siguientes:
+## Los contenedores creados y sus puertos (si se usan) son los siguientes:pi
 - `nginx - :${APP_VOLUMEN}`
 - `mysql - :${MYSQL_PORT}`
 - `pgsql - :${POSTGRES_PORT}`
@@ -70,6 +70,10 @@ Con esto ya estaria para continuar creando los proyectos de laravel y angular. A
 - `docker-compose run --rm composer dump-autoload` 
 - `docker-compose run --rm artisan config:clear`
 - `docker-compose run --rm artisan router:clear`
+
+## Comando para iniciar cron:
+- `docker-compose up -d cron`
+- `docker-compose stop cron` 
 
 ## Ngrok
 - `./ngrok http APP_PORT -host-header="localhost:APP_PORT"`

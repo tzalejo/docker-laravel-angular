@@ -10,13 +10,14 @@
     "chmod-frontend":"docker-compose exec npm chmod -R gu+w . && docker-compose exec npm chmod -R guo+w .",
     "chmods":"npm run chmod-backend && npm run chmod-frontend",
 
-    "install-dependencies": "npm run install-front && npm run install-back",
+    "install-dependencies": "npm run install-front && npm run install-back && npm run re:start",
     "install-front": "docker-compose run --rm npm npm i",
     "install-back": "docker-compose run --rm composer install && docker-compose run --rm artisan key:generate && docker-compose run --rm artisan migrate --seed",
     
     "start:back": "npm run install-dependencies-back && cd backend && php artisan serve",
     "back:clear":"docker-compose run --rm composer dump-autoload && docker-compose run --rm artisan config:clear",    
-    
+    "re:start": "npm run start:migration && npm run back:clear",
+    "start:migration": "docker-compose run --rm artisan migrate:refresh --seed",
     "test": "docker-compose run --rm php ./vendor/bin/phpunit",
 
     "postinstall": "ng build --aot --prod",

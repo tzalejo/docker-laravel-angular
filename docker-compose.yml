@@ -109,6 +109,20 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
     networks:
       - laravel
+  
+  cron:
+    build: 
+      context: .
+      args: 
+        - PHP_VERSION=${APP_PHP_VERSION}
+        - PHP_VARIANTE=${APP_PHP_VARIANTE}
+      dockerfile: cron.dockerfile
+    container_name: cron
+    networks: 
+      - laravel
+    volumes: 
+      - ${APP_VOLUMEN_PATH}:/var/www/html
+
 ### MySql  ################################################
   # mysql:
   #   image: mysql:${MYSQL_VERSION}
