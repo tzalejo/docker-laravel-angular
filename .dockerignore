@@ -6,3 +6,11 @@ backend/vendor
 .gitignore
 .env
 data/*
+docker-compose.yml
+composer.dockerfile
+cron.dockerfile
+crontab
+Dockerfile.backend
+Dockerfile.frontend
+nginx.dockerfile
+ 
