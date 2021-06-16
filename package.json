@@ -11,7 +11,7 @@
     "chmods":"npm run chmod-backend && npm run chmod-frontend",
 
     "install-dependencies": "npm run install-front && npm run install-back && npm run re:start",
-    "install-front": "docker-compose run --rm npm npm i",
+    "install-front": "sudo rm -rf ./backend/client/node_modules && docker-compose run --rm npm npm i",
     "install-back": "docker-compose run --rm composer install && docker-compose run --rm artisan key:generate && docker-compose run --rm artisan migrate --seed",
     
     "start:back": "npm run install-dependencies-back && cd backend && php artisan serve",

@@ -30,6 +30,7 @@ services:
     container_name: php
     volumes:
       - ${APP_VOLUMEN_PATH}:/var/www/html:delegated
+      - ./php-worker/supervisord.d:/etc/supervisord.d
     ports:
       - "9000:9000"
     networks:
@@ -122,6 +123,38 @@ services:
       - laravel
     volumes: 
       - ${APP_VOLUMEN_PATH}:/var/www/html
+
+  supervisor-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+      args:
+        - PHP_VERSION=${APP_PHP_VERSION}
+        - PHP_VARIANTE=${APP_PHP_VARIANTE}
+    container_name: supervisor-worker
+    depends_on:
+      - pgsql
+    entrypoint: ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
+    volumes:
+      - ${APP_VOLUMEN_PATH}:/var/www/html:delegated
+      - ./php-worker/supervisord.d:/etc/supervisord.d
+    networks:
+      - laravel
+  
+  # pgadmin:
+  #   links:
+  #     - pgsql
+  #   image: thajeztah/pgadmin4
+  #   container_name: pgadmin
+  #   volumes:
+  #     - /data/pgadmin/pgadmin:/root/.pgadmin
+  #   ports:
+  #     - "5050:5050"
+  #   restart: unless-stopped
+  #   networks: 
+  #     - laravel
+  #   depends_on:
+  #     - pgsql
 
 ### MySql  ################################################
   # mysql:

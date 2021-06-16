@@ -35,6 +35,7 @@ RUN set -e; \
                 unzip \
                 curl \
                 oniguruma-dev \
+                supervisor \
                 sqlite-dev
 
 # RUN docker-php-ext-configure gd --with-freetype --with-jpeg
@@ -42,3 +43,10 @@ RUN docker-php-ext-configure intl
 RUN docker-php-ext-configure imap
 # Install php extensions
 RUN docker-php-ext-install curl pdo pdo_mysql pdo_sqlite exif gd pgsql pdo_pgsql
+
+#--------------------------------------------------------------------------
+# Optional Supervisord Configuration
+#--------------------------------------------------------------------------
+COPY supervisord.conf /etc/supervisord.conf
+# ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
+# WORKDIR /etc/supervisor/conf.d/

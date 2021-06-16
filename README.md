@@ -70,6 +70,7 @@ Con esto ya estaria para continuar creando los proyectos de laravel y angular. A
 - `docker-compose run --rm composer dump-autoload` 
 - `docker-compose run --rm artisan config:clear`
 - `docker-compose run --rm artisan router:clear`
+- `docker-compose run --rm artisan queue:word --stop-when-empty`
 
 ## Comando para iniciar cron:
 - `docker-compose up -d cron`
