@@ -10,7 +10,7 @@
     "chmod-frontend":"docker-compose exec npm chmod -R gu+w . && docker-compose exec npm chmod -R guo+w .",
     "chmods":"npm run chmod-backend && npm run chmod-frontend",
 
-    "install-dependencies": "npm run install-front && npm run install-back && npm run back:clea",
+    "install-dependencies": "npm run install-front && npm run install-back && npm run back:clear && docker-compose restart",
     "install-front": "sudo rm -rf ./backend/client/node_modules && docker-compose run --rm npm npm i",
     "install-back": "sudo rm -rf ./backend/server/vendor && docker-compose run --rm composer install",
     
