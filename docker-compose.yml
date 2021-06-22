@@ -140,7 +140,31 @@ services:
       - ./php-worker/supervisord.d:/etc/supervisord.d
     networks:
       - laravel
-  
+
+### db etl ###########################################
+  pgsql_etl:
+    build:
+      context: ./postgres
+      args:
+        - POSTGRES_VERSION=${POSTGRES_VERSION}
+        - POSTGRES_DB=${ETL_DB_DATABASE}
+        - POSTGRES_USER=${ETL_DB_USERNAME}
+        - POSTGRES_PASSWORD=${ETL_DB_PASSWORD}
+    container_name: pgsql_etl
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ${POSTGRES_VOLUMEN_PATH}:/var/lib/postgresql/data
+      # - ${POSTGRES_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+    ports:
+      - "${ETL_DB_PORT}:5432"
+    environment:
+      - POSTGRES_DB=${ETL_DB_DATABASE}
+      - POSTGRES_USER=${ETL_DB_USERNAME}
+      - POSTGRES_PASSWORD=${ETL_DB_PASSWORD}
+    networks:
+      - laravel
+
   # pgadmin:
   #   links:
   #     - pgsql
