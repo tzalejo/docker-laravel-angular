@@ -4,6 +4,7 @@ FROM php:${PHP_VERSION}-${PHP_VARIANTE}
 LABEL maintainer="tzalejo@gmail.com"
 LABEL version="1.1"
 ADD ./php/www.conf /usr/local/etc/php-fpm.d/www.conf
+ADD ./php/uploads.ini /usr/local/etc/php/conf.d/uploads.ini 
 
 RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D laravel
 
