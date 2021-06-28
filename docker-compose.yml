@@ -101,7 +101,7 @@ services:
     tty: true
     volumes:
       - ${POSTGRES_VOLUMEN_PATH}:/var/lib/postgresql/data
-      # - ${POSTGRES_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+      - ${POSTGRES_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d/
     ports:
       - "${POSTGRES_PORT}:5432"
     environment:
@@ -131,7 +131,7 @@ services:
       args:
         - PHP_VERSION=${APP_PHP_VERSION}
         - PHP_VARIANTE=${APP_PHP_VARIANTE}
-    container_name: supervisor-worker
+    container_name: supedcrvisor-worker
     depends_on:
       - pgsql
     entrypoint: ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
@@ -154,8 +154,8 @@ services:
     restart: unless-stopped
     tty: true
     volumes:
-      - ${POSTGRES_VOLUMEN_PATH}:/var/lib/postgresql/data
-      # - ${POSTGRES_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+      - ${POSTGRES_VOLUMEN_PATH_ETL}:/var/lib/postgresql/data
+      - ${POSTGRES_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
     ports:
       - "${ETL_DB_PORT}:5432"
     environment:
