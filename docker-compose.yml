@@ -28,6 +28,7 @@ services:
         - PHP_VERSION=${APP_PHP_VERSION}
         - PHP_VARIANTE=${APP_PHP_VARIANTE}
     container_name: php
+    user: 1000:1000
     volumes:
       - ${APP_VOLUMEN_PATH}:/var/www/html:delegated
       - ./php-worker/supervisord.d:/etc/supervisord.d
@@ -43,6 +44,7 @@ services:
       args:
         - COMPOSER_VERSION=${COMPOSER_VERSION}
     container_name: composer
+    user: 1000:1000
     volumes:
       - ${APP_VOLUMEN_PATH}:/var/www/html
     working_dir: /var/www/html
@@ -76,6 +78,7 @@ services:
         - PHP_VERSION=${APP_PHP_VERSION}
         - PHP_VARIANTE=${APP_PHP_VARIANTE}
     container_name: artisan
+    user: 1000:1000
     volumes:
       - ${APP_VOLUMEN_PATH}:/var/www/html:delegated
     depends_on:

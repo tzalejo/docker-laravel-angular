@@ -1,7 +1,7 @@
 {
   "name": "alejandro",
   "version": "1.0.0",
-  "description": "Una aplicacion para gestion cursos, realizado con angular y laravel",
+  "description": "Una entorno de development en docker con angular y laravel",
   "main": "index.js",
   "scripts": {
     "dcbuild":"docker-compose build && docker-compose up",
@@ -15,8 +15,7 @@
     "install-back": "sudo rm -rf ./backend/server/vendor && docker-compose run --rm composer install",
     
     "start:back": "npm run install-dependencies-back && cd backend && php artisan serve",
-    "back:clear":"docker-compose run --rm composer dump-autoload && docker-compose run --rm artisan config:clear",    
-    "re:start": "npm run start:migration && npm run back:clear",
+    "back:clear":"docker-compose run --rm composer dump-autoload && docker-compose run --rm artisan config:clear && docker-compose run --rm artisan config:cache && docker-compose run --rm artisan cache:clear",
     "start:migration": "docker-compose run --rm artisan migrate:refresh --seed",
     "test": "docker-compose run --rm php ./vendor/bin/phpunit",
 

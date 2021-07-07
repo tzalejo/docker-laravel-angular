@@ -3,7 +3,7 @@ ARG PHP_VARIANTE
 FROM php:${PHP_VERSION}-${PHP_VARIANTE}
 LABEL maintainer="tzalejo@gmail.com"
 LABEL version="1.1"
-ADD ./php/www.conf /usr/local/etc/php-fpm.d/www.conf
+ADD ./php/www.conf /usr/local/etc/php-fpm.d/
 ADD ./php/uploads.ini /usr/local/etc/php/conf.d/uploads.ini 
 
 RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D laravel
@@ -17,34 +17,35 @@ WORKDIR /var/www/html
 # Install dev dependencies
 # RUN apk add --no-cache --virtual .build-deps curl-dev sqlite-dev 
 RUN set -e; \
-         apk add --no-cache \
-                coreutils \
-                freetype-dev \
-                libjpeg-turbo-dev \
-                libjpeg-turbo \
-                libpng-dev \
-                libzip-dev \
-                jpeg-dev \
-                icu-dev \
-                zlib-dev \
-                curl-dev \
-                imap-dev \
-                libxslt-dev libxml2-dev \
-                postgresql-dev \
-                libgcrypt-dev \
-                vim \
-                unzip \
-                curl \
-                oniguruma-dev \
-                supervisor \
-                sqlite-dev
+       apk add --no-cache \
+              coreutils \
+              freetype-dev \
+              libjpeg-turbo-dev \
+              libjpeg-turbo \
+              libpng-dev \
+              libzip-dev \
+              jpeg-dev \
+              icu-dev \
+              zlib-dev \
+              curl-dev \
+              imap-dev \
+              libxslt-dev libxml2-dev \
+              postgresql-dev \
+              libgcrypt-dev \
+              vim \
+              unzip \
+              libsodium-dev \
+              curl \
+              oniguruma-dev \
+              supervisor \
+              sqlite-dev
 
-# RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-configure imap
 # Install php extensions
-RUN docker-php-ext-install curl pdo pdo_mysql pdo_sqlite exif gd pgsql pdo_pgsql
-
+RUN docker-php-ext-install curl pdo pdo_mysql pdo_sqlite exif gd pgsql pdo_pgsql zip sodium
+RUN docker-php-ext-enable gd
 #--------------------------------------------------------------------------
 # Optional Supervisord Configuration
 #--------------------------------------------------------------------------

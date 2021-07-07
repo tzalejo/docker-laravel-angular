@@ -42,7 +42,7 @@ Una vez definido todas las variables de entorno, debemos crear el entorno con el
 Con esto ya estaria para continuar creando los proyectos de laravel y angular. Algo que hay que saber es que hay dos contenedores, artisan y composer, que son contenedores que utilizaremos para ejecutar comandos.
 
 ## Crear proyecto laravel
-- `docker-compose run --rm composer create-project --prefer-dist laravel/laravel .`
+- `docker-compose run --rm --user 'id -u':'id -g' composer create-project laravel/laravel .`
 - `docker-compose run --rm composer create-project --prefer-dist laravel/laravel:^7.0 .` Si quiero especificar una version 
 
 ## Crear proyecto angular
