@@ -15,7 +15,7 @@
     "install-back": "sudo rm -rf ./backend/server/vendor && docker-compose run --rm composer install",
     
     "start:back": "npm run install-dependencies-back && cd backend && php artisan serve",
-    "back:clear":"docker-compose run --rm composer dump-autoload && docker-compose run --rm artisan config:clear && docker-compose run --rm artisan config:cache && docker-compose run --rm artisan cache:clear",
+    "back:clear":"docker-compose run --rm composer dump-autoload && docker-compose run --rm artisan config:clear && docker-compose run --rm artisan cache:clear",
     "start:migration": "docker-compose run --rm artisan migrate:refresh --seed",
     "test": "docker-compose run --rm php ./vendor/bin/phpunit",
 
