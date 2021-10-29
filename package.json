@@ -4,21 +4,18 @@
   "description": "Una entorno de development en docker con angular y laravel",
   "main": "index.js",
   "scripts": {
-    "dcbuild":"docker-compose build && docker-compose up",
-    "dcdestruir":"docker-compose down && sudo rm -rf data/",
-    "chmod-backend":"docker-compose exec php chmod -R gu+w . && docker-compose exec php chmod -R guo+w .",
-    "chmod-frontend":"docker-compose exec npm chmod -R gu+w . && docker-compose exec npm chmod -R guo+w .",
-    "chmods":"npm run chmod-backend && npm run chmod-frontend",
-
+    "dcbuild": "docker-compose build && docker-compose up",
+    "dcdestruir": "docker-compose down && sudo rm -rf data/",
+    "chmod-backend": "docker-compose exec php chmod -R gu+w . && docker-compose exec php chmod -R guo+w .",
+    "chmod-frontend": "docker-compose exec npm chmod -R gu+w . && docker-compose exec npm chmod -R guo+w .",
+    "chmods": "npm run chmod-backend && npm run chmod-frontend",
     "install-dependencies": "npm run install-front && npm run install-back && npm run back:clear && docker-compose restart",
     "install-front": "sudo rm -rf ./backend/client/node_modules && docker-compose run --rm npm npm i",
     "install-back": "sudo rm -rf ./backend/server/vendor && docker-compose run --rm composer install",
-    
     "start:back": "npm run install-dependencies-back && cd backend && php artisan serve",
-    "back:clear":"docker-compose run --rm composer dump-autoload && docker-compose run --rm artisan config:clear && docker-compose run --rm artisan cache:clear",
+    "back:clear": "docker-compose run --rm composer dump-autoload && docker-compose run --rm artisan config:clear && docker-compose run --rm artisan cache:clear",
     "start:migration": "docker-compose run --rm artisan migrate:refresh --seed",
     "test": "docker-compose run --rm php ./vendor/bin/phpunit",
-
     "postinstall": "ng build --aot --prod",
     "heroku-postbuild": "ng build --prod"
   },
@@ -32,5 +29,8 @@
     "mysql"
   ],
   "author": "Alejandro Valenzuela",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }

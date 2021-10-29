@@ -144,6 +144,26 @@ services:
     networks:
       - laravel
 
+
+  supervisor-websocket:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+      args:
+        - PHP_VERSION=${APP_PHP_VERSION}
+        - PHP_VARIANTE=${APP_PHP_VARIANTE}
+    container_name: supervisord-websocket
+    depends_on:
+      - pgsql
+    ports:
+      - "${WEBSOCKET_PORT}:6001"
+    entrypoint: ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
+    volumes:
+      - ${APP_VOLUMEN_PATH}:/var/www/html:delegated
+      - ./php-websocket/supervisord.d:/etc/supervisord.d
+    networks:
+      - laravel
+
 ### db etl ###########################################
   pgsql_etl:
     build:

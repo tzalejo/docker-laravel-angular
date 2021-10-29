@@ -13,4 +13,4 @@ data/*
 # Dockerfile.backend
 # Dockerfile.frontend
 # nginx.dockerfile
- 
+node_modules
