@@ -40,7 +40,10 @@ RUN set -e; \
               supervisor \
               sqlite-dev
 
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+# Para php >7.4
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+# Para php <7.4
+# RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ 
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-configure imap
 # Install php extensions
